@@ -182,7 +182,7 @@ function gss4tilda_createT526 (blockID, data)
 			//Имя
 			$(T526CurElement).find(".t526__persname:first").html( htmlentities(data.table.rows[i].c[1].v) );
 			//Ник в телеграме
-			$(T526CurElement).find(".t526__persdescr:first").html( htmlentities(data.table.rows[i].c[2].v) + ":" );
+			$(T526CurElement).find(".t526__persdescr:first").html( htmlentities(data.table.rows[i].c[2].v) );
 			//Описание
 			$(T526CurElement).find(".t526__perstext:first").html( htmlentities(data.table.rows[i].c[3].v) );
 		}
