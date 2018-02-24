@@ -147,29 +147,15 @@ function gss4tilda_createT273 (blockID, data)
 function gss4tilda_createT526 (blockID, data)
 {
 	//контейнер данных
-	var T526Container = $("#rec"+blockID + " .t-col:first");
+	var T526Container = $("#rec"+blockID + " .t526__container .t-col:first");
 	//первый элемент который будем клонировать
 	var T526Element = $("#rec"+blockID + " .t526__itemwrapper:first");
 	
 	//Заполняем блок команды
 	for(var i=0; i<data.table.rows.length; i++)
 	{
-		
-		/*for(var j=0; j<data.table.rows[i].c.length; j++)
-		{			
-			if(data.table.rows[i].c[j] !== null && typeof data.table.rows[i].c[j] === 'object' && data.table.rows[i].c[j].v !== null && data.table.rows[i].c[j].v !== '')
-			{
-				part2 += htmlentities(data.table.rows[i].c[j].v) + ';'
-				empty = false;
-			}
-			else
-			{
-				part2 += ';'
-			};
-			
-		}*/
 		if ( data.table.rows[i].c[0] !== null && typeof data.table.rows[i].c[0] === 'object' && data.table.rows[i].c[0].v !== null && data.table.rows[i].c[0].v !== ''
-		  && data.table.rows[i].c[1] !== null && typeof data.table.rows[i].c[1] === 'object' && data.table.rows[i].c[1].v !== null && data.table.rows[i].c[1].v !== '' 
+		  && data.table.rows[i].c[1] !== null && typeof data.table.rows[i].c[1] === 'object' && data.table.rows[i].c[1].v !== null && data.table.rows[i].c[1].v !== ''
 		  && data.table.rows[i].c[2] !== null && typeof data.table.rows[i].c[2] === 'object' && data.table.rows[i].c[2].v !== null && data.table.rows[i].c[2].v !== ''
 		  && data.table.rows[i].c[3] !== null && typeof data.table.rows[i].c[3] === 'object' && data.table.rows[i].c[3].v !== null && data.table.rows[i].c[3].v !== ''
 		)
@@ -178,7 +164,9 @@ function gss4tilda_createT526 (blockID, data)
 			T526CurElement = i==0 ? T526Element : $(T526Element).clone().appendTo(T526Container);
 			//Меняем содержимое
 			//Картинка
-			$(T526CurElement).find(".t526__bgimg:first").html( htmlentities(data.table.rows[i].c[0].v));
+			$(T526CurElement).find(".t526__bgimg:first")
+                .attr('data-original', data.table.rows[i].c[0].v)
+                .css({'background-image': "url(" + htmlentities(data.table.rows[i].c[0].v) + ")"});
 			//Имя
 			$(T526CurElement).find(".t526__persname:first").html( htmlentities(data.table.rows[i].c[1].v) );
 			//Ник в телеграме
