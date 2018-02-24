@@ -15,16 +15,16 @@ var styles = {};
 
 //фунция получения параметров таблицы: стилей и ширины столбцов
 t431_createTable = function (
-  id,
-  t431__tablehead,
-  t431__tablebody,
-  per,
-  w,
-  t431__btnstyles,
-  t431__tdstyles,
-  t431__thstyles,
-  t431__oddrowstyles,
-  t431__evenrowstyles
+	id,
+	t431__tablehead,
+	t431__tablebody,
+	per,
+	w,
+	t431__btnstyles,
+	t431__tdstyles,
+	t431__thstyles,
+	t431__oddrowstyles,
+	t431__evenrowstyles
 ){
 	// сохраняем переданные стили
 	styles['rec'+id] = {
@@ -41,15 +41,15 @@ t431_createTable = function (
 
 	// вызываем старую функцию
 	oldF(id,
-	t431__tablehead,
-	t431__tablebody,
-	per,
-	w,
-	t431__btnstyles,
-	t431__tdstyles,
-	t431__thstyles,
-	t431__oddrowstyles,
-	t431__evenrowstyles);
+		t431__tablehead,
+		t431__tablebody,
+		per,
+		w,
+		t431__btnstyles,
+		t431__tdstyles,
+		t431__thstyles,
+		t431__oddrowstyles,
+		t431__evenrowstyles);
 }
 
 function gss4tilda_createT431 (blockID, data)
@@ -124,9 +124,9 @@ function gss4tilda_createT273 (blockID, data)
 
 		}*/
 		if ( data.table.rows[i].c[0] !== null && typeof data.table.rows[i].c[0] === 'object' && data.table.rows[i].c[0].v !== null && data.table.rows[i].c[0].v !== ''
-		  && data.table.rows[i].c[1] !== null && typeof data.table.rows[i].c[1] === 'object' && data.table.rows[i].c[1].v !== null && data.table.rows[i].c[1].v !== ''
-		  && data.table.rows[i].c[2] !== null && typeof data.table.rows[i].c[2] === 'object' && data.table.rows[i].c[2].v !== null && data.table.rows[i].c[2].v !== ''
-		  && data.table.rows[i].c[3] !== null && typeof data.table.rows[i].c[3] === 'object' && data.table.rows[i].c[3].v !== null && data.table.rows[i].c[3].v !== ''
+			&& data.table.rows[i].c[1] !== null && typeof data.table.rows[i].c[1] === 'object' && data.table.rows[i].c[1].v !== null && data.table.rows[i].c[1].v !== ''
+			&& data.table.rows[i].c[2] !== null && typeof data.table.rows[i].c[2] === 'object' && data.table.rows[i].c[2].v !== null && data.table.rows[i].c[2].v !== ''
+			&& data.table.rows[i].c[3] !== null && typeof data.table.rows[i].c[3] === 'object' && data.table.rows[i].c[3].v !== null && data.table.rows[i].c[3].v !== ''
 		)
 		{
 			//Копируем блок с вопросом и ответом
@@ -147,26 +147,29 @@ function gss4tilda_createT273 (blockID, data)
 function gss4tilda_createT526 (blockID, data)
 {
 	//контейнер данных
-	var T526Container = $("#rec"+blockID + " .t526__container .t-col:first");
+	var T526Container = $("#rec"+blockID + " .t526__container:first");
 	//первый элемент который будем клонировать
-	var T526Element = $("#rec"+blockID + " .t526__itemwrapper:first");
+	var T526Element = $("#rec"+blockID + " .t526__container .t-col:first");
 
 	//Заполняем блок команды
 	for(var i=0; i<data.table.rows.length; i++)
 	{
 		if ( data.table.rows[i].c[0] !== null && typeof data.table.rows[i].c[0] === 'object' && data.table.rows[i].c[0].v !== null && data.table.rows[i].c[0].v !== ''
-		  && data.table.rows[i].c[1] !== null && typeof data.table.rows[i].c[1] === 'object' && data.table.rows[i].c[1].v !== null && data.table.rows[i].c[1].v !== ''
-		  && data.table.rows[i].c[2] !== null && typeof data.table.rows[i].c[2] === 'object' && data.table.rows[i].c[2].v !== null && data.table.rows[i].c[2].v !== ''
-		  && data.table.rows[i].c[3] !== null && typeof data.table.rows[i].c[3] === 'object' && data.table.rows[i].c[3].v !== null && data.table.rows[i].c[3].v !== ''
+			&& data.table.rows[i].c[1] !== null && typeof data.table.rows[i].c[1] === 'object' && data.table.rows[i].c[1].v !== null && data.table.rows[i].c[1].v !== ''
+			&& data.table.rows[i].c[2] !== null && typeof data.table.rows[i].c[2] === 'object' && data.table.rows[i].c[2].v !== null && data.table.rows[i].c[2].v !== ''
+			&& data.table.rows[i].c[3] !== null && typeof data.table.rows[i].c[3] === 'object' && data.table.rows[i].c[3].v !== null && data.table.rows[i].c[3].v !== ''
 		)
 		{
+			if (i > 1 && ((i+1) % 3 === 1)) {
+				$('<div class="t-clear t526__separator"></div>').appendTo(T526Container);
+			}
 			//Копируем блок членом команды
 			T526CurElement = i==0 ? T526Element : $(T526Element).clone().appendTo(T526Container);
 			//Меняем содержимое
 			//Картинка
 			$(T526CurElement).find(".t526__bgimg:first")
-                .attr('data-original', data.table.rows[i].c[0].v)
-                .css({'background-image': "url(" + htmlentities(data.table.rows[i].c[0].v) + ")"});
+				.attr('data-original', data.table.rows[i].c[0].v)
+				.css({'background-image': "url(" + htmlentities(data.table.rows[i].c[0].v) + ")"});
 			//Имя
 			$(T526CurElement).find(".t526__persname:first").html( htmlentities(data.table.rows[i].c[1].v) );
 			//Ник в телеграме
