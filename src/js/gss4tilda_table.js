@@ -26,7 +26,7 @@ t431_createTable = function (
   t431__oddrowstyles,
   t431__evenrowstyles
 ){
-	// сохраняем переданные стили 
+	// сохраняем переданные стили
 	styles['rec'+id] = {
 		t431__tablehead: t431__tablehead,
 		t431__tablebody: t431__tablebody,
@@ -61,7 +61,7 @@ function gss4tilda_createT431 (blockID, data)
 		part1 += htmlentities(data.table.cols[i].label) + ';';
 	}
 	part1 = part1.slice(0,-1);
-	
+
 	//Заполняем данные таблицы
 	var part2="";
 	var empty = true;
@@ -69,7 +69,7 @@ function gss4tilda_createT431 (blockID, data)
 	{
 		empty = true;
 		for(var j=0; j<data.table.rows[i].c.length; j++)
-		{			
+		{
 			if(data.table.rows[i].c[j] !== null && typeof data.table.rows[i].c[j] === 'object' && data.table.rows[i].c[j].v !== null && data.table.rows[i].c[j].v !== '')
 			{
 				part2 += htmlentities(data.table.rows[i].c[j].v) + ';'
@@ -79,9 +79,9 @@ function gss4tilda_createT431 (blockID, data)
 			{
 				part2 += ';'
 			};
-			
+
 		}
-		
+
 		part2 = !empty ? part2.slice(0,-1) + "\n" : part2.slice(0,- data.table.rows[i].c.length);
 		//part2 += "\n";
 	}
@@ -89,14 +89,14 @@ function gss4tilda_createT431 (blockID, data)
 
 	//Очищаем блок от старых данных
 	$('#rec' + blockID + " table").html("");
-	
-	//вызываем функцию формирования для таблицы	
+
+	//вызываем функцию формирования для таблицы
 	t431_createTable(blockID, part1, part2, styles['rec'+blockID].per, styles['rec'+blockID].w, styles['rec'+blockID].t431__btnstyles, styles['rec'+blockID].t431__tdstyles, styles['rec'+blockID].t431__thstyles, styles['rec'+blockID].t431__oddrowstyles, styles['rec'+blockID].t431__evenrowstyles);
 
 	//подгоняем ширину столбцов
 	if('' && $('#rec'+ blockID +' .t431 .t-container .t431__data-part2').html().length>0) {
 		setTimeout(function(){ t431_setHeadWidth(prms[curBlock].id); }, 200);
-	}	
+	}
 }
 
 function gss4tilda_createT273 (blockID, data)
@@ -105,13 +105,13 @@ function gss4tilda_createT273 (blockID, data)
 	var faqContainer = $("#rec"+blockID + " .t-col:first");
 	//первый элемент который будем клонировать
 	var faqElement = $("#rec"+blockID + " .t273__wrapper:first");
-	
+
 	//Заполняем блок вопросов и ответов
 	for(var i=0; i<data.table.rows.length; i++)
 	{
-		
+
 		/*for(var j=0; j<data.table.rows[i].c.length; j++)
-		{			
+		{
 			if(data.table.rows[i].c[j] !== null && typeof data.table.rows[i].c[j] === 'object' && data.table.rows[i].c[j].v !== null && data.table.rows[i].c[j].v !== '')
 			{
 				part2 += htmlentities(data.table.rows[i].c[j].v) + ';'
@@ -121,10 +121,10 @@ function gss4tilda_createT273 (blockID, data)
 			{
 				part2 += ';'
 			};
-			
+
 		}*/
 		if ( data.table.rows[i].c[0] !== null && typeof data.table.rows[i].c[0] === 'object' && data.table.rows[i].c[0].v !== null && data.table.rows[i].c[0].v !== ''
-		  && data.table.rows[i].c[1] !== null && typeof data.table.rows[i].c[1] === 'object' && data.table.rows[i].c[1].v !== null && data.table.rows[i].c[1].v !== '' 
+		  && data.table.rows[i].c[1] !== null && typeof data.table.rows[i].c[1] === 'object' && data.table.rows[i].c[1].v !== null && data.table.rows[i].c[1].v !== ''
 		  && data.table.rows[i].c[2] !== null && typeof data.table.rows[i].c[2] === 'object' && data.table.rows[i].c[2].v !== null && data.table.rows[i].c[2].v !== ''
 		  && data.table.rows[i].c[3] !== null && typeof data.table.rows[i].c[3] === 'object' && data.table.rows[i].c[3].v !== null && data.table.rows[i].c[3].v !== ''
 		)
@@ -147,29 +147,15 @@ function gss4tilda_createT273 (blockID, data)
 function gss4tilda_createT526 (blockID, data)
 {
 	//контейнер данных
-	var T526Container = $("#rec"+blockID + " .t-col:first");
+	var T526Container = $("#rec"+blockID + " .t526__container .t-col:first");
 	//первый элемент который будем клонировать
 	var T526Element = $("#rec"+blockID + " .t526__itemwrapper:first");
-	
+
 	//Заполняем блок команды
 	for(var i=0; i<data.table.rows.length; i++)
 	{
-		
-		/*for(var j=0; j<data.table.rows[i].c.length; j++)
-		{			
-			if(data.table.rows[i].c[j] !== null && typeof data.table.rows[i].c[j] === 'object' && data.table.rows[i].c[j].v !== null && data.table.rows[i].c[j].v !== '')
-			{
-				part2 += htmlentities(data.table.rows[i].c[j].v) + ';'
-				empty = false;
-			}
-			else
-			{
-				part2 += ';'
-			};
-			
-		}*/
 		if ( data.table.rows[i].c[0] !== null && typeof data.table.rows[i].c[0] === 'object' && data.table.rows[i].c[0].v !== null && data.table.rows[i].c[0].v !== ''
-		  && data.table.rows[i].c[1] !== null && typeof data.table.rows[i].c[1] === 'object' && data.table.rows[i].c[1].v !== null && data.table.rows[i].c[1].v !== '' 
+		  && data.table.rows[i].c[1] !== null && typeof data.table.rows[i].c[1] === 'object' && data.table.rows[i].c[1].v !== null && data.table.rows[i].c[1].v !== ''
 		  && data.table.rows[i].c[2] !== null && typeof data.table.rows[i].c[2] === 'object' && data.table.rows[i].c[2].v !== null && data.table.rows[i].c[2].v !== ''
 		  && data.table.rows[i].c[3] !== null && typeof data.table.rows[i].c[3] === 'object' && data.table.rows[i].c[3].v !== null && data.table.rows[i].c[3].v !== ''
 		)
@@ -178,7 +164,9 @@ function gss4tilda_createT526 (blockID, data)
 			T526CurElement = i==0 ? T526Element : $(T526Element).clone().appendTo(T526Container);
 			//Меняем содержимое
 			//Картинка
-			$(T526CurElement).find(".t526__bgimg:first").html( htmlentities(data.table.rows[i].c[0].v));
+			$(T526CurElement).find(".t526__bgimg:first")
+                .attr('data-original', data.table.rows[i].c[0].v)
+                .css({'background-image': "url(" + htmlentities(data.table.rows[i].c[0].v) + ")"});
 			//Имя
 			$(T526CurElement).find(".t526__persname:first").html( htmlentities(data.table.rows[i].c[1].v) );
 			//Ник в телеграме
@@ -212,7 +200,7 @@ google.visualization.Query.setResponse = function(data)
 
 	}
 
-	
+
 	//Переходим к следующему блоку или сбрасываем счетчик
 	if (curBlock < prms.length-1)
 	{
@@ -243,14 +231,14 @@ function getGssData()
 		//получаем код таблицы из url и отправляем запрос на получение данных
 		var gssCode = prms[curBlock]["url"].slice( prms[curBlock]["url"].indexOf("spreadsheets/d/") + 15, prms[curBlock]["url"].indexOf("/edit?"));
 		$.ajax({
-			url: 'https://docs.google.com/a/google.com/spreadsheets/d/' + gssCode + '/gviz/tq?tq=' + encodeURIComponent( prms[curBlock].req ), 
+			url: 'https://docs.google.com/a/google.com/spreadsheets/d/' + gssCode + '/gviz/tq?tq=' + encodeURIComponent( prms[curBlock].req ),
 			dataType : 'jsonp'
 		});
 	}
 }
 
 function htmlentities(s){	// Convert all applicable characters to HTML entities
-	// 
+	//
 	// +   original by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
 
 	var div = document.createElement('div');
