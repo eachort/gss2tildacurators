@@ -179,6 +179,7 @@ function gss4tilda_createT526 (blockID, data)
 			$(T526CurElement).find(".t526__perstext2:first").html( htmlentities(data.table.rows[i].c[4].v) );
 			$(T526CurElement).find(".t526__perstext3:first").html( htmlentities(data.table.rows[i].c[5].v) );
 			$(T526CurElement).find(".t526__perstext4:first").html( htmlentities(data.table.rows[i].c[6].v) );
+			$(T526CurElement).find(".t526__perstext4:first").html( htmlentities(data.table.rows[i].c[7].v) );
 		}
 	}
 }
